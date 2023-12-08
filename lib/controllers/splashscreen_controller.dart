@@ -46,6 +46,9 @@ class SplashScreenController{
   RxInt currentShowing=0.obs;
   //this will change value of title
   changeCurrentShowing()async{
+    if(bodyData.length-1==currentShowing.value){
+      return;
+    }
     currentShowing.value=currentShowing.value+1;
   }
 
