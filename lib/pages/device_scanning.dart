@@ -7,7 +7,15 @@ class DeviceScanning extends GetView<DeviceScanningController>{
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-
+       body: StreamBuilder(
+         stream: controller.scanForDevices(),
+         builder: (BuildContext context, AsyncSnapshot<List<dynamic>> snapshot) {
+           return ListView(
+             children: snapshot.data!.map((e) => Text(e.name.toString())).toList(),
+           );
+         },
+         
+       ),
     );
   }
 

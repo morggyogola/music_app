@@ -5,7 +5,7 @@ class DeviceScanningController{
   BluetoothManager bluetoothManager = BluetoothManager.instance;
 
     //scanning for devices
-    Future <Stream> scanForDevices()async{
+    Stream<List> scanForDevices(){
       bluetoothManager.startScan()
       .then((value) => null);
       final result = bluetoothManager.scanResults;

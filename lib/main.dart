@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_project/controllers/device_scanning_controller.dart';
 import 'package:flutter_project/controllers/splashscreen_controller.dart';
 import 'package:flutter_project/pages/splashscreenview.dart';
 import 'package:get/get.dart';
@@ -14,6 +15,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Get.put(SplashScreenController());
+    Get.put(DeviceScanningController());
     return GetMaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
