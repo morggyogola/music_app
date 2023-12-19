@@ -1,15 +1,53 @@
-import 'package:flutter_bluetooth_basic/flutter_bluetooth_basic.dart';
+// import 'package:bluetooth_classic/bluetooth_classic.dart';
+// import 'package:bluetooth_classic/models/device.dart';
+// import 'package:get/get.dart';
+//
+// class DeviceScanningController {
+//   final _bluetoothClassicPlugin = BluetoothClassic();
+//   // List<Device> devices = [];
+//   bool scanning = false;
+//   RxList<Device> discoveredDevices = <Device>[].obs;
+//
+//   // Future<List> scanningDevices() async {
+//   //   if (! scanning) {
+//   //     _bluetoothClassicPlugin.startScan();
+//   //     _bluetoothClassicPlugin.onDeviceDiscovered().listen((event) {
+//   //       print(event.name);
+//   //       discoveredDevices.value = [...discoveredDevices, event];
+//   //     });
+//   //   }
+//   Future<void> scanningDevices() async {
+//     if (!scanning) {
+//       scanning = true; // Set scanning flag to true
+//       _bluetoothClassicPlugin.startScan();
+//       _bluetoothClassicPlugin.onDeviceDiscovered().listen((event) {
+//         print(event.name);
+//         discoveredDevices.add(event); // Use add() instead of assigning a new list
+//       });
+//     }
+//   }
+//     return discoveredDevices;
+//   }
+//
+// }
 
-class DeviceScanningController{
-  //Bluetooth Instance
-  BluetoothManager bluetoothManager = BluetoothManager.instance;
+import 'package:bluetooth_classic/bluetooth_classic.dart';
+import 'package:bluetooth_classic/models/device.dart';
+import 'package:get/get.dart';
 
-    //scanning for devices
-    Stream<List> scanForDevices(){
-      bluetoothManager.startScan()
-      .then((value) => null);
-      final result = bluetoothManager.scanResults;
-      return result;
+class DeviceScanningController {
+  final _bluetoothClassicPlugin = BluetoothClassic();
+  bool scanning = false;
+  RxList<Device> discoveredDevices = <Device>[].obs;
+
+  Future<void> scanningDevices() async {
+    if (!scanning) {
+      scanning = true;
+      _bluetoothClassicPlugin.startScan();
+      _bluetoothClassicPlugin.onDeviceDiscovered().listen((event) {
+        print(event.name);
+        discoveredDevices.add(event);
+      });
     }
-
+  }
 }

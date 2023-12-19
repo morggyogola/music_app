@@ -5,17 +5,23 @@ import 'package:get/get.dart';
 
 class DeviceScanning extends GetView<DeviceScanningController>{
   @override
+  final controller = Get.put(DeviceScanningController());
   Widget build(BuildContext context) {
     return Scaffold(
-       body: StreamBuilder(
-         stream: controller.scanForDevices(),
-         builder: (BuildContext context, AsyncSnapshot<List<dynamic>> snapshot) {
-           return ListView(
-             children: snapshot.data!.map((e) => Text(e.name.toString())).toList(),
-           );
-         },
-         
-       ),
+        body: Obx(() {
+      if (controller.discoveredDevices.isNotEmpty) {
+        return ListView(
+          children: controller.discoveredDevices.map((device) => Text(device.name ?? 'Unknown Device')).toList(),
+        );
+      } else {
+        return Text("No devices found");
+      }
+    }),
+      floatingActionButton:FloatingActionButton (
+        onPressed: () {
+          controller.scanningDevices();
+
+        },) ,
     );
   }
 
