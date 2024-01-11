@@ -1,3 +1,5 @@
+import 'package:flutter_project/controllers/device_scanning_controller.dart';
+import 'package:flutter_project/pages/device_scanning.dart';
 import 'package:get/get.dart';
 
 class SplashScreenController{
@@ -47,6 +49,8 @@ class SplashScreenController{
   //this will change value of title
   changeCurrentShowing()async{
     if(bodyData.length-1==currentShowing.value){
+      Get.off(DeviceScanning());
+
       return;
     }
     currentShowing.value=currentShowing.value+1;

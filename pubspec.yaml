@@ -38,10 +38,14 @@ dependencies:
   google_fonts:
   get:
   image_fade: ^0.6.2
+  bluetooth_classic: ^0.0.1
+  dio: ^5.4.0
+  shared_preferences: ^2.2.2
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
+
 
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is

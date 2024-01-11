@@ -114,6 +114,8 @@ class SplashScreenView extends GetView<SplashScreenController> {
         ),)
       ),
       backgroundColor: const Color(0xffF5F5F7),
+
+
     );
     throw UnimplementedError();
   }
